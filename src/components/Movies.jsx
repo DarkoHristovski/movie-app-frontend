@@ -1,12 +1,12 @@
 
 import React from 'react';
 import axios from "axios";
-
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 
 import MovieCard from "./MovieCard";
+
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -29,7 +29,7 @@ if (loading) {
 }
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Movies</h2>
+      <h3 className="text-2xl font-bold mb-4">Movies</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
       
         {Array.isArray(movies) && movies.length > 0 ? (movies.map(movie => (
