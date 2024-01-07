@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import MovieCard from "./MovieCard";
 
 const Movies = () => {
@@ -27,22 +28,21 @@ if (loading) {
   return <div>Loading...</div>;
 }
   return (
-    <div>
-      <h2>Movies</h2>
-      <ul>
+    <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">Movies</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
+      
         {Array.isArray(movies) && movies.length > 0 ? (movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
-              {movie.title}
-            </Link>
-          </li>
+          <div key={movie.id}>
+            <MovieCard movie={movie} />
+          </div>
         ))
         ) : (
-          <li>No movies available</li>
+          <div>No movies available</div>
         )}
-      </ul>
-
-    </div>
+      
+      </div>    
+  </div>
     
   );
 };
