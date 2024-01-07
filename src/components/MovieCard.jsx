@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MovieCards = ({ movie }) => {
+const MovieCard = ({ movie }) => {
     return (
         <div className="movie-card">
             <Link to={`/movies/${movie.id}`}>

@@ -1,18 +1,31 @@
+
+import React from 'react';
 import axios from "axios";
+
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import MovieCard from "./MovieCard";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .get("https://movie-app-gx5p.onrender.com/api/movies")
-      .then(res => setMovies(res.data))
-      .catch(e => console.error(e));
+      .then(res => {
+        setMovies(res.data);
+        setLoading(false);
+      })
+      .catch(e => {
+        console.error(e);
+        setLoading(false);
+    });
   }, []);
 
-
+if (loading) {
+  return <div>Loading...</div>;
+}
   return (
     <div>
       <h2>Movies</h2>
