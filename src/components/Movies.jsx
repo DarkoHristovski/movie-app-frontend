@@ -6,6 +6,7 @@ import { useState } from "react";
 
 
 import MovieCard from "./MovieCard";
+import MovieCarusel from "./MovieCarusel";
 
 
 const Movies = () => {
