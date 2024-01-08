@@ -78,13 +78,14 @@ const MovieCarousel = () => {
       {/* Slider controls */}
 
       <div className="absolute top-1/2 left-0 transform -translate-y-1/2">
-      <button className="text-white" onClick={() => /* Handle logic to move to the previous item */}>
-        Previous
-      </button>
-      <button className="text-white ml-4" onClick={() => /* Handle logic to move to the next item */}>
-        Next
-      </button>
-    </div>
+  <button className="text-white" onClick={() => {/* Handle logic to move to the previous item */}}>
+    Previous
+  </button>
+  <button className="text-white ml-4" onClick={() => {/* Handle logic to move to the next item */}}>
+    Next
+  </button>
+</div>
+
     
     </div>
   );
