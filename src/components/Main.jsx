@@ -1,9 +1,13 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Movies from "./Movies";
 
 const Main = () =>{
     return(
         <main>
-       <Movies/>
+            <Routes>
+                <Route path="/" element={<Movies />} />
+            </Routes>
         </main>
     )
 }
