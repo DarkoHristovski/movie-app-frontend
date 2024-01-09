@@ -41,7 +41,7 @@ body {
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .movies-container {
     @apply grid grid-cols-2 gap-4;
   }
@@ -51,4 +51,6 @@ body {
   .movies-container {
     @apply grid-cols-3;
   }
-}
+}*/
+
+
