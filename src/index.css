@@ -1,15 +1,10 @@
-
-@import 'flowbite/dist/flowbite.css';
+@import "flowbite/dist/flowbite.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: bg-gray-100;
   color: text-gray-700;
 }
@@ -36,8 +31,15 @@ body {
   @apply text-lg mt-2;
 }
 
-
-
+.img-details-wrapper {
+  height: 1000px;
+  width: 600px;
+}
+.img-details-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 
 @media (min-width: 768px) {
   .movies-container {
