@@ -7,6 +7,9 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: bg-gray-100;
   color: text-gray-700;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /* Center content on the page */

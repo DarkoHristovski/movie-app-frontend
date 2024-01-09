@@ -9,7 +9,10 @@ const MovieCarousel = ({ movies }) => {
       const carouselElement = document.getElementById('movie-carousel');
 
       if (carouselElement && movies.length > 0) {
-        const movieItems = movies.map((movie, index) => ({
+        // Select the last four movies from the array
+        const lastFourMovies = movies.slice(-4);
+    
+        const movieItems = lastFourMovies.map((movie, index) => ({
           position: index,
           el: carouselElement.getElementsByClassName('movie-item')[index],
         }));
@@ -64,25 +67,41 @@ const MovieCarousel = ({ movies }) => {
   };
 
   return (
-    <div id="movie-carousel" className="relative w-full">
-      <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-        {movies.map((movie, index) => (
-          <div
-            key={index}
-            className="hidden duration-700 ease-in-out movie-item cursor-pointer"
-            data-carousel-item
-            onClick={handleImageClick}
-          >
-            <img
-              src={movie.poster}
-              className="absolute block w-full h-full object-cover"
-              alt={movie.title}
-            />
-          </div>
-        ))}
-      </div>
+<div className="relative w-full">
+    {/* Left arrow */}
+    <button
+  className="absolute right-4 top-1/2 z-10 transform -translate-y-1/2 text-white p-2 bg-gray-800 hover:bg-gray-600 rounded-full"
+  onClick={() => carouselRef.current && carouselRef.current.next()}
+>
+  Next
+</button>
+
+    <div id="movie-carousel" className="relative h-96 w-full overflow-hidden rounded-lg">
+      {movies.map((movie, index) => (
+        <div
+          key={index}
+          className="hidden movie-item cursor-pointer"
+          data-carousel-item
+          onClick={handleImageClick}
+        >
+          <img
+            src={movie.poster}
+            className="absolute block w-full h-full object-cover"
+            alt={movie.title}
+          />
+        </div>
+      ))}
     </div>
-  );
+
+    {/* Right arrow */}
+    <button
+  className="absolute left-4 top-1/2 z-10 transform -translate-y-1/2 text-white p-2 bg-gray-800 hover:bg-gray-600 rounded-full"
+  onClick={() => carouselRef.current && carouselRef.current.prev()}
+>
+  Previous
+</button>
+  </div>
+);
 };
 
 export default MovieCarousel;
