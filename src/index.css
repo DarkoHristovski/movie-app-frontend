@@ -1,3 +1,4 @@
+@import "flowbite/dist/flowbite.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +16,7 @@ body {
 
 /* Style for the Movies component */
 .movies-container {
-  @apply p-4;
+  @apply p-2;
 }
 
 .movie-card {
@@ -23,7 +24,7 @@ body {
 }
 
 .movie-card img {
-  @apply w-full h-auto;
+  @apply w-full h-auto object-cover rounded;
 }
 
 .movie-card h3 {

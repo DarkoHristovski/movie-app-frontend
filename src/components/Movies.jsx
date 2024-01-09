@@ -6,6 +6,7 @@ import { useState } from "react";
 
 
 import MovieCard from "./MovieCard";
+import MovieCarousel from "./MovieCarousel";
 
 
 const Movies = () => {
@@ -29,7 +30,9 @@ if (loading) {
 }
   return (
     <div className="container mx-auto p-4">
-      <h3 className="text-2xl font-bold mb-4">Movies</h3>
+      <h3 className="text-2xl font-bold mb-3">Popular movies</h3>
+      <MovieCarousel movies={movies} className="mb-8" />
+      <h3 className="text-2xl font-bold mb-3">Explore movies</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
       
         {Array.isArray(movies) && movies.length > 0 ? (movies.map(movie => (
