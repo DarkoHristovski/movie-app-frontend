@@ -38,10 +38,33 @@ body {
   height: 1000px;
   width: 600px;
 }
-.img-details-wrapper img {
+
+.img-edit-wrapper{
+height: 500px;
+width: 600px;
+}
+
+.img-details-wrapper img,
+.img-edit-wrapper img
+{
   height: 100%;
   width: 100%;
+
+}
+
+.img-edit-wrapper img{
+  object-fit: contain;
+}
+
+.img-details-wrapper img{
   object-fit: cover;
+}
+
+main {
+  min-height: calc(100vh - 105px);
+}
+footer {
+  height: 70px;
 }
 
 /*@media (min-width: 768px) {

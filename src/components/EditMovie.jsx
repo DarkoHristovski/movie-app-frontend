@@ -10,7 +10,7 @@ const EditMovie = () => {
     poster: "",
     length: "",
     genre: "",
-    actors: "",
+    actors: [],
   });
   const navigate = useNavigate();
   const { id } = useParams();
@@ -22,7 +22,12 @@ const EditMovie = () => {
   }, []);
 
   const handleChange = (e) => {
-    setMovie({ ...movie, [e.target.name]: e.target.value });
+    if (e.target.name === 'actors') {
+      const actors = e.target.value.split(',');
+      setMovie({ ...movie, [e.target.name]: actors })
+    } else {
+      setMovie({ ...movie, [e.target.name]: e.target.value });
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,12 +39,20 @@ const EditMovie = () => {
   };
 
   return (
-    <section>
-      <h2>Update a Movie</h2>
-      <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+    <section className="pt-20">
+      <div className="flex justify-center align-middle">
+        <div className="w-1/3">
+      <div className="img-edit-wrapper">
+        <img src={movie.poster} alt={movie.title} />
+      </div>
+      </div>
+      <div className="w-1/2">
+      <h2 className="mb-8 text-2xl">Update a Movie</h2>
+      <form className="columns-2 w-full" onSubmit={handleSubmit}>
+     
         <label
           htmlFor="title"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Title
         </label>
@@ -47,7 +60,7 @@ const EditMovie = () => {
           type="text"
           id="title"
           name="title"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="title"
           required=""
           defaultValue={movie.title}
@@ -55,7 +68,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="director"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Director
         </label>
@@ -63,7 +76,7 @@ const EditMovie = () => {
           type="text"
           id="director"
           name="director"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="director"
           required=""
           defaultValue={movie.director}
@@ -71,7 +84,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="year"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Year
         </label>
@@ -79,7 +92,7 @@ const EditMovie = () => {
           type="number"
           id="year"
           name="year"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="year"
           required=""
           defaultValue={movie.year}
@@ -87,7 +100,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="rating"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Rating
         </label>
@@ -95,7 +108,7 @@ const EditMovie = () => {
           type="number"
           id="rating"
           name="rating"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="rating"
           required=""
           defaultValue={movie.rating}
@@ -103,7 +116,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="poster"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Poster
         </label>
@@ -111,7 +124,7 @@ const EditMovie = () => {
           type="text"
           id="poster"
           name="poster"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="poster"
           required=""
           defaultValue={movie.poster}
@@ -119,7 +132,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="length"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Length
         </label>
@@ -127,7 +140,7 @@ const EditMovie = () => {
           type="number"
           id="length"
           name="length"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="length"
           required=""
           defaultValue={movie.length}
@@ -135,7 +148,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="language"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Language
         </label>
@@ -143,7 +156,7 @@ const EditMovie = () => {
           type="text"
           id="language"
           name="language"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="language"
           required=""
           defaultValue={movie.language}
@@ -151,7 +164,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="genre"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Genre
         </label>
@@ -159,7 +172,7 @@ const EditMovie = () => {
           type="text"
           id="genre"
           name="genre"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="genre"
           required=""
           defaultValue={movie.genre}
@@ -167,7 +180,7 @@ const EditMovie = () => {
         />
         <label
           htmlFor="actors"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Actors
         </label>
@@ -175,17 +188,18 @@ const EditMovie = () => {
           type="text"
           id="actors"
           name="actors"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="actors"
           required=""
           defaultValue={movie.actors}
           onChange={handleChange}
         />
-        <button type="submit">Update</button>
+        <button className="bg-gray-300 mt-6 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-" type="submit">Update</button>
       </form>
+      </div>
+      </div>
     </section>
   );
-  //Darko Part
 };
 
 export default EditMovie;
