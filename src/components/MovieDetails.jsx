@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const MovieDetails = () => {
   const [movie, setMovies] = useState([]);
@@ -13,6 +13,13 @@ const MovieDetails = () => {
       .then((res) => setMovies(res.data))
       .catch((e) => console.log(e));
   }, []);
+
+  const handleDeleteMovie = () => {
+    axios
+      .delete(`https://movie-app-gx5p.onrender.com/api/movies/${id}`)
+      .then((res) => navigate("/"))
+      .catch((e) => console.error(e));
+  };
 
   return (
     <section className="container border rounded-lg border-red-800 shadow-lg  flex justify-center mx-auto items-center p-4">
@@ -47,6 +54,20 @@ const MovieDetails = () => {
               </li>
             )}
           </ul>
+          <div className="ml-12 mt-12">
+            <Link
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3"
+              to={`/movies/${id}/update`}
+            >
+              Edit
+            </Link>
+            <a
+              onClick={handleDeleteMovie}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+            >
+              Delete
+            </a>
+          </div>
         </div>
       </div>
     </section>
