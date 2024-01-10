@@ -8,7 +8,7 @@ const MovieCard = ({ movie }) => {
         <img
           src={movie.poster}
           alt={movie.title}
-          className="p-2 border border-red-900 rounded shadow-lg text-center bg-red-400"
+          className="w-full h-auto object-cover rounded p-2 border border-red-900 rounded shadow-lg text-center bg-red-400"
         />
       </Link>
     </div>

@@ -29,11 +29,11 @@ if (loading) {
   return <div>Loading...</div>;
 }
   return (
-    <div className="container mx-auto p-4">
-      <h3 className="text-2xl font-bold mb-3">Popular movies</h3>
-      <MovieCarousel movies={movies} className="mb-8" />
-      <h3 className="text-2xl font-bold mb-3">Explore movies</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
+    <div className="container mx-auto p-8">
+      <h3 className="text-xl font-bold mb-3">Popular movies</h3>
+      <MovieCarousel movies={movies} className="w-full" />
+      <h3 className="text-xl font-bold mb-3">Explore movies</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mx-4">
       
         {Array.isArray(movies) && movies.length > 0 ? (movies.map(movie => (
           <div key={movie.id}>

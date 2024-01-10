@@ -7,6 +7,9 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: bg-gray-100;
   color: text-gray-700;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /* Center content on the page */
@@ -41,7 +44,7 @@ body {
   object-fit: cover;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .movies-container {
     @apply grid grid-cols-2 gap-4;
   }
@@ -51,4 +54,6 @@ body {
   .movies-container {
     @apply grid-cols-3;
   }
-}
+}*/
+
+
