@@ -10,7 +10,7 @@ const Header = ({ setIsModalOpen }) => {
   };
 
   return (
-    <header className="bg-white">
+    <header className="bg-gray-300">
       <nav className="flex justify-between items-center w-[92%] mx-auto">
         <div>
           <img
@@ -20,28 +20,28 @@ const Header = ({ setIsModalOpen }) => {
           />
         </div>
         <div
-          className={`nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 ${
+          className={`nav-links duration-500 md:static absolute md:min-h-fit min-h-[60vh] left-0 ${
             menuOpen ? "top-[9%] z-50" : "top-[-100%]"
           } md:w-auto w-full flex items-center px-5`}
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
             <li>
-              <a className="hover:text-gray-500" href="#">
+              <a className="hover:text-gray-900" href="#">
                 All movies
               </a>
             </li>
             <li>
-              <a className="hover:text-gray-500" href="#">
+              <a className="hover:text-gray-900" href="#">
                 Best rated
               </a>
             </li>
             <li>
-              <a className="hover:text-gray-500" href="#">
-                Newst
+              <a className="hover:text-gray-900" href="#">
+                Newest
               </a>
             </li>
             <li>
-              <a className="hover:text-gray-500" href="#">
+              <a className="hover:text-gray-900" href="#">
                 Impressum
               </a>
             </li>
@@ -49,7 +49,7 @@ const Header = ({ setIsModalOpen }) => {
         </div>
         <div className="flex items-center gap-6">
           <button
-            className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]"
+            className="bg-red-400 text-gray-900 px-5 py-2 rounded-full hover:bg-red-700"
             onClick={() => {
               setIsModalOpen((prev) => {
                 return !prev;

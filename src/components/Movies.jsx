@@ -29,10 +29,14 @@ if (loading) {
   return <div>Loading...</div>;
 }
   return (
-    <div className="container mx-auto p-8">
-      <h3 className="text-xl font-bold mb-3">Popular movies</h3>
+    
+    
+  <div className="container mx-auto">
+      
       <MovieCarousel movies={movies} className="w-full" />
-      <h3 className="text-xl font-bold mb-3">Explore movies</h3>
+    
+      <h3 className="text-xl font-bold mb-3 p-4">Explore movies</h3>
+
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mx-4">
       
         {Array.isArray(movies) && movies.length > 0 ? (movies.map(movie => (
@@ -43,8 +47,8 @@ if (loading) {
         ) : (
           <div>No movies available</div>
         )}
-      
-      </div>    
+      </div>
+          
   </div>
     
   );
