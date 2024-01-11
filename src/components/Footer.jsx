@@ -7,7 +7,7 @@ const Footer = () => {
    
 
 
-<footer class="bg-white dark:bg-gray-900">
+<footer class="bg-white dark:bg-gray-900 pt-6">
                
     <div class="px-40 py-6 bg-gray-300 dark:bg-gray-700 md:flex md:items-center md:justify-between">
 

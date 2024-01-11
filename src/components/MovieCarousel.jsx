@@ -9,10 +9,15 @@ const MovieCarousel = ({ movies }) => {
       const carouselElement = document.getElementById('movie-carousel');
 
       if (carouselElement && movies.length > 0) {
-        const movieItems = movies.map((movie, index) => ({
-          position: index,
-          el: carouselElement.getElementsByClassName('movie-item')[index],
-        }));
+
+        // Include only the last 4 movies
+      const last4Movies = movies.slice(-4);
+
+      const movieItems = last4Movies.map((movie, index) => ({
+        position: index,
+        el: carouselElement.getElementsByClassName('movie-item')[index],
+      }));
+
 
         const options = {
           defaultPosition: 0,
