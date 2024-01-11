@@ -31,7 +31,7 @@ if (loading) {
   return (
     
     
-  <div className="container mx-auto">
+  <div className="mx-auto">
       
       <MovieCarousel movies={movies} className="w-full" />
     
