@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const AddMovieModal = ({ isModalOpen, setIsModalOpen }) => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,15 @@ const AddMovieModal = ({ isModalOpen, setIsModalOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted:", formData);
+    const actorsArray = formData.actors.split(',').map(actor => actor.trim());
+
+    // Update formData with the actors array
+    const updatedFormData = { ...formData, actors: actorsArray };
+    axios
+      .post(`https://movie-app-gx5p.onrender.com/api/movies`, updatedFormData)
+      .then(() => navigate("/"))
+      .catch((e) => console.error(e));
+
     setFormData({
       title: "",
       director: "",
