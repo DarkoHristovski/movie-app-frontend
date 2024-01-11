@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
+
 const Header = ({ setIsModalOpen }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,11 +27,21 @@ const Header = ({ setIsModalOpen }) => {
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
             <li>
+
+              <a className="hover:text-gray-500" href="/">
+
               <a className="hover:text-gray-900" href="#">
+
                 All movies
               </a>
             </li>
             <li>
+
+              <a className="hover:text-gray-500" href="/movies/best-rated">
+                Best rated
+              </a>
+            </li>
+
               <a className="hover:text-gray-900" href="#">
                 Best rated
               </a>
@@ -45,6 +56,7 @@ const Header = ({ setIsModalOpen }) => {
                 Impressum
               </a>
             </li>
+
           </ul>
         </div>
         <div className="flex items-center gap-6">
