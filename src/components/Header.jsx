@@ -32,7 +32,6 @@ const Header = ({ setIsModalOpen }) => {
               </a>
             </li>
             <li>
-
               <a className="hover:text-gray-900" href="/movies/best-rated">
                 Best rated
               </a>
