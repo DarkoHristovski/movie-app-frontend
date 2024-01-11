@@ -27,22 +27,13 @@ const Header = ({ setIsModalOpen }) => {
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
             <li>
-
-              <a className="hover:text-gray-500" href="/">
-
               <a className="hover:text-gray-900" href="#">
-
                 All movies
               </a>
             </li>
             <li>
 
-              <a className="hover:text-gray-500" href="/movies/best-rated">
-                Best rated
-              </a>
-            </li>
-
-              <a className="hover:text-gray-900" href="#">
+              <a className="hover:text-gray-900" href="/movies/best-rated">
                 Best rated
               </a>
             </li>
