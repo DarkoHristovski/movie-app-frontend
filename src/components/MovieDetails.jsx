@@ -40,7 +40,7 @@ const MovieDetails = () => {
               <li className="text-3xl mb-5">Rating: {movie.rating}/10</li>
             )}
             {movie.length && (
-              <li className="text-3xl mb-5">Length: {movie.length}</li>
+              <li className="text-3xl mb-5">Length: {movie.length} min</li>
             )}
             {movie.language && (
               <li className="text-3xl mb-5">Language: {movie.language}</li>
