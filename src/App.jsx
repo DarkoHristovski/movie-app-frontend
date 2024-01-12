@@ -9,7 +9,6 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    console.log("Changed", isModalOpen);
   }, [isModalOpen]);
 
   return (
