@@ -27,7 +27,7 @@ const Header = ({ setIsModalOpen }) => {
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
             <li>
-              <a className="hover:text-gray-900" href="#">
+              <a className="hover:text-gray-900" href="/">
                 All movies
               </a>
             </li>
@@ -36,17 +36,6 @@ const Header = ({ setIsModalOpen }) => {
                 Best rated
               </a>
             </li>
-            <li>
-              <a className="hover:text-gray-900" href="#">
-                Newest
-              </a>
-            </li>
-            <li>
-              <a className="hover:text-gray-900" href="#">
-                Impressum
-              </a>
-            </li>
-
           </ul>
         </div>
         <div className="flex items-center gap-6">
