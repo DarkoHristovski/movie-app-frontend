@@ -7,9 +7,6 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: bg-gray-100;
   color: text-gray-700;
-  margin: 0;
-  padding: 0;
-  width: 100%;
 }
 
 /* Center content on the page */
@@ -34,40 +31,7 @@ body {
   @apply text-lg mt-2;
 }
 
-.img-details-wrapper {
-  height: 800px;
-  width: 600px;
-}
-
-.img-edit-wrapper{
-height: 500px;
-width: 600px;
-}
-
-.img-details-wrapper img,
-.img-edit-wrapper img
-{
-  height: 100%;
-  width: 100%;
-
-}
-
-.img-edit-wrapper img{
-  object-fit: contain;
-}
-
-.img-details-wrapper img{
-  object-fit: cover;
-}
-
-main {
-  min-height: calc(100vh - 105px);
-}
-footer {
-  height: 70px;
-}
-
-/*@media (min-width: 768px) {
+@media (min-width: 768px) {
   .movies-container {
     @apply grid grid-cols-2 gap-4;
   }
@@ -77,6 +41,57 @@ footer {
   .movies-container {
     @apply grid-cols-3;
   }
-}*/
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: bg-gray-100;
+  color: text-gray-700;
+}
 
+/* Center content on the page */
+.container {
+  @apply mx-auto;
+}
+
+/* Style for the Movies component */
+.movies-container {
+  @apply p-4;
+}
+
+.movie-card {
+  @apply border border-gray-900 rounded overflow-hidden transition-transform duration-300 ease-in-out hover:transform scale-105;
+}
+
+.movie-card img {
+  @apply w-full h-auto;
+}
+
+.movie-card h3 {
+  @apply text-lg mt-2;
+}
+
+.img-details-wrapper {
+  height: 1000px;
+  width: 600px;
+}
+.img-details-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .movies-container {
+    @apply grid grid-cols-2 gap-4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movies-container {
+    @apply grid-cols-3;
+  }
+}
