@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import Comments from "./Comments";
 
 const MovieDetails = () => {
   const [movie, setMovies] = useState([]);
@@ -68,6 +69,7 @@ const MovieDetails = () => {
               Delete
             </a>
           </div>
+          <Comments movie={movie} />
         </div>
       </div>
     </section>
