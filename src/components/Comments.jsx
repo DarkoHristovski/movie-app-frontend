@@ -54,7 +54,9 @@ const Comments = ({ movieId }) => {
           <div className="modal-wrapper for-wrapper p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="flex justify-between align-middle">
               <p className="text-">Add a comment</p>
-              <p className="text-3xl">X</p>
+              <p onClick={closeModal} className="text-3xl">
+                X
+              </p>
             </div>
             <form onSubmit={handleAddComment} action="">
               <label
@@ -68,7 +70,7 @@ const Comments = ({ movieId }) => {
                 id="username"
                 name="username"
                 className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="title"
+                placeholder="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
