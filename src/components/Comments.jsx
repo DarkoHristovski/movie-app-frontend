@@ -17,6 +17,15 @@ const Comments = ({ movieId }) => {
     }
   }, [movieId]);
 
+  const handleDeleteComment = () => {
+    axios
+      .delete(
+        `https://movie-app-gx5p.onrender.com/api/movies/${movieId}/comments`
+      )
+      .then(() => {})
+      .catch((e) => console.error(e));
+  };
+
   const openModal = () => {
     setCommentModal(true);
   };
@@ -95,12 +104,22 @@ const Comments = ({ movieId }) => {
               key={comment.id}
               className="mt-5 max-w-sm p-2 pl-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
-              <h4 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {comment.username}
-              </h4>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {comment.commenttext}
-              </p>
+              <div className="flex justify-between">
+                <div>
+                  <h4 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {comment.username}
+                  </h4>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    {comment.commenttext}
+                  </p>
+                </div>
+                <p
+                  onClick={handleDeleteComment}
+                  className="text-2xl self-center cursor-pointer"
+                >
+                  X
+                </p>
+              </div>
             </div>
           ))
         ) : (
