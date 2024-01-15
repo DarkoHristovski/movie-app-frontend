@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Comments = ({ movieId }) => {
   const [comments, setComments] = useState([]);
   const [commentModal, setCommentModal] = useState(false);
-
+  const [username, setUsername] = useState("");
+  const [commenttext, setCommenttext] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     if (movieId) {
       axios
@@ -16,13 +19,24 @@ const Comments = ({ movieId }) => {
         .catch((e) => console.error(e));
     }
   }, [movieId]);
-
-  const handleDeleteComment = () => {
+  {
+    console.log("comments", comments);
+  }
+  const handleDeleteComment = (commentId) => {
     axios
-      .delete(
-        `https://movie-app-gx5p.onrender.com/api/movies/${movieId}/comments`
+      .delete(`https://movie-app-gx5p.onrender.com/api/comments/${commentId}`)
+      .then((res) => navigate("/"))
+      .catch((e) => console.error(e));
+  };
+
+  const handleAddComment = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        `https://movie-app-gx5p.onrender.com/api/movies/${movieId}/comments`,
+        { movieId, commenttext, username }
       )
-      .then(() => {})
+      .then((res) => navigate("/"))
       .catch((e) => console.error(e));
   };
 
@@ -42,7 +56,7 @@ const Comments = ({ movieId }) => {
               <p className="text-">Add a comment</p>
               <p className="text-3xl">X</p>
             </div>
-            <form action="">
+            <form onSubmit={handleAddComment} action="">
               <label
                 htmlFor="userame"
                 className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -55,7 +69,8 @@ const Comments = ({ movieId }) => {
                 name="username"
                 className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="title"
-                value="Fight Club"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
 
               <label
@@ -67,12 +82,14 @@ const Comments = ({ movieId }) => {
               <textarea
                 id="message"
                 rows="4"
+                value={commenttext}
+                onChange={(e) => setCommenttext(e.target.value)}
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Write your comment here..."
               ></textarea>
               <button
                 type="submit"
-                className="bg-gray-300 mt-6 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600 mr-2"
               >
                 {" "}
                 Send
@@ -83,7 +100,7 @@ const Comments = ({ movieId }) => {
                 className="bg-gray-300 mt-6 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
               >
                 {" "}
-                Cancel
+                Close
               </button>
             </form>
           </div>
@@ -114,7 +131,9 @@ const Comments = ({ movieId }) => {
                   </p>
                 </div>
                 <p
-                  onClick={handleDeleteComment}
+                  onClick={() => {
+                    handleDeleteComment(comment.id);
+                  }}
                   className="text-2xl self-center cursor-pointer"
                 >
                   X
@@ -123,7 +142,7 @@ const Comments = ({ movieId }) => {
             </div>
           ))
         ) : (
-          <p>Loading....</p>
+          <p>No Comments</p>
         )}
       </div>
     </>
