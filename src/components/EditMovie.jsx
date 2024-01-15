@@ -41,7 +41,7 @@ const EditMovie = () => {
   return (
     <section className="pt-20">
       <div className="flex justify-center align-middle">
-        <div className="w-1/3">
+        <div className="w-3/3">
       <div className="img-edit-wrapper">
         <img src={movie.poster} alt={movie.title} />
       </div>
@@ -194,7 +194,7 @@ const EditMovie = () => {
           defaultValue={movie.actors}
           onChange={handleChange}
         />
-        <button className="bg-gray-300 mt-6 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-" type="submit">Update</button>
+        <button className="bg-gray-300 mt-6 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" type="submit">Update</button>
       </form>
       </div>
       </div>
